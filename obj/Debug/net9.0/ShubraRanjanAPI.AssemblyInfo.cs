@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShubraRanjanAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c323d4381ee3f71aa593095557b10ea495b8f2f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShubraRanjanAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShubraRanjanAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
