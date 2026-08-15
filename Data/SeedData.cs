@@ -27,7 +27,7 @@ public static class SeedData
             EmailConfirmed = true,
          };
 
-         var result = await userManager.CreateAsync(adminUser, "Admin@1234");
+         var result = await userManager.CreateAsync(adminUser, "*******");
          if (result.Succeeded)
          {
             await userManager.AddToRoleAsync(adminUser, "Admin");
