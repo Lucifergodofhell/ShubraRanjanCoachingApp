@@ -3,9 +3,22 @@ using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShubraRanjanAPI.Entities;
+using ShubraRanjanAPI.Entities.AssociationTable;
 
 public class CourseRepository(AppDbContext context) : ICourseRepository
 {
+   public async Task<bool> AddSubToCourse(SubCourseDto subCourseDto)
+   {
+      CourseSubject courseSubject = new CourseSubject
+      {
+         CourseId = subCourseDto.CourseId,
+         SubjectId = subCourseDto.SubjectId
+      };
+      await context.CourseSubjects.AddAsync(courseSubject);
+      var result = await context.SaveChangesAsync();
+      return result>0;
+   }
+
    public async Task<bool> CreateCourse(CourseDto courseDto)
    {
       Course course  = new Course
@@ -25,6 +38,19 @@ public class CourseRepository(AppDbContext context) : ICourseRepository
       return result>0;
    }
 
+   public async  Task<bool> DeleteSubFromCourse(SubCourseDto subCourseDto)
+   {
+      CourseSubject courseSubject = new CourseSubject
+      {
+         CourseId = subCourseDto.CourseId,
+         SubjectId = subCourseDto.SubjectId
+      };
+      
+      var result = await context.CourseSubjects.Where(s=>s.SubjectId==subCourseDto.SubjectId&&
+                                                      s.CourseId==subCourseDto.CourseId).ExecuteDeleteAsync();
+      return result>0;
+   }
+
    public async Task<IList<Course>> GetAllCourse()
    {
       return await context.Courses.ToListAsync();
@@ -33,6 +59,21 @@ public class CourseRepository(AppDbContext context) : ICourseRepository
    public async Task<Course?> GetCourse(int courseId)
    {
       return  await context.Courses.FirstOrDefaultAsync(s=>s.CourseId==courseId);
+   }
+
+   public async Task<IList<SubjectDto>> GetSubToCourse(int courseId)
+   {
+      var result  = await context.CourseSubjects.Where(cs=>cs.CourseId==courseId)
+                                                .Select(cs=>new SubjectDto
+                                                {
+                                                   SubjectId = cs.Subject.SubjectId,
+                                                   SubjectName = cs.Subject.SubjectName
+                                                }).ToListAsync();
+      if (result != null)
+      {
+         return result;
+      }
+      return null!;
    }
 
    public async Task<bool> ModifyCourse(CourseDto courseDto)

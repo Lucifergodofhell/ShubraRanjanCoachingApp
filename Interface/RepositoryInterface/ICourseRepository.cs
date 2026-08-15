@@ -8,5 +8,8 @@ public interface ICourseRepository
    Task<bool> DeleteCourse(int courseId);
    Task<Course> GetCourse(int courseId);
    Task<IList<Course>> GetAllCourse();
+   Task<bool> AddSubToCourse(SubCourseDto subCourseDto);
+   Task<IList<SubjectDto>> GetSubToCourse(int courseId);
+   Task<bool> DeleteSubFromCourse(SubCourseDto subCourseDto);
 
 }

@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using ShubraRanjanAPI.Entities;
 using ShubraRanjanAPI.Interface.RepositoryInterface;
 using ShubraRanjanAPI.Interface.ServiceInterface;
+using ShubraRanjanAPI.Repositories;
 using ShubraRanjanAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,10 @@ builder.Services.AddScoped<ITeacherServices, TeacherService>();
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 builder.Services.AddScoped<ICourseServices, CourseServices>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IEnrollServices, EnrollServices>();
+builder.Services.AddScoped<IEnrollRepository, EnrollRepository>();
+builder.Services.AddScoped<IContentRepository, ContentRepository>();
+builder.Services.AddScoped<IContentServices, ContentServices>();
 
 builder.Services.AddSwaggerGen(options =>
 {

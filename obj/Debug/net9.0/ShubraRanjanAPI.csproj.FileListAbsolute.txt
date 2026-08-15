@@ -133,3 +133,4 @@
 /Users/ravidhal/Desktop/Interview/ShubraRanjanAPI/obj/Debug/net9.0/ShubraRanjanAPI.pdb
 /Users/ravidhal/Desktop/Interview/ShubraRanjanAPI/obj/Debug/net9.0/ShubraRanjanAPI.genruntimeconfig.cache
 /Users/ravidhal/Desktop/Interview/ShubraRanjanAPI/obj/Debug/net9.0/ref/ShubraRanjanAPI.dll
+/Users/ravidhal/Desktop/Interview/ShubraRanjanAPI/obj/Debug/net9.0/ShubraRanjanAPI.sourcelink.json

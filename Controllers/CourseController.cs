@@ -61,4 +61,36 @@ public class CourseController(ICourseServices courseServices) : BaseController
       }
       return BadRequest("Error while modifying course");
    }
+
+   [HttpPost("add-subject")]
+   public async Task<ActionResult> AddSubToCourse(SubCourseDto subCourseDto)
+   {
+      var result = await courseServices.AddSubToCourse(subCourseDto);
+      if (result)
+      {
+         return Ok("Subject has been added to course");
+      }
+      return BadRequest("Error while adding subject to course");
+   }
+   [HttpGet("gets-subject/{courseId}")]
+   public async Task<ActionResult<IList<SubjectDto>>> GetSubToCourse(int courseId)
+   {
+      var result = await courseServices.GetSubToCourse(courseId);
+      if (result!=null)
+      {
+         return Ok(result);
+      }
+      return BadRequest("Error while getting subject for course");
+   }
+
+   [HttpDelete("delete-subject")]
+   public async Task<ActionResult> DeleteSubFromCourse(SubCourseDto subCourseDto)
+   {
+      var result = await courseServices.DeleteSubFromCourse(subCourseDto);
+      if (result)
+      {
+         return Ok("Subject has been delted from course");
+      }
+      return BadRequest("Error while deleting subject from course");
+   }
 }
